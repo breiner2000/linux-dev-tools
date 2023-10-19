@@ -34,6 +34,9 @@ sudo mkdir -p /etc/systemd/system/
 
 sudo mv -f docker.service docker.socket /etc/systemd/system/
 
+sudo systemctl stop docker
+
+
 sudo systemctl enable docker.service
 
 
