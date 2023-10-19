@@ -6,7 +6,7 @@ docker_cli_res=$?
 # docker_desktop_res=$?
 
 
-if [ "$docker_res" -eq 0 ]; then
+if [ "$docker_cli_res" -eq 0 ]; then
     echo -e "\e[1;32m Docker instalado correctamente. Prueba con docker run hello-world
     \e[0m"
 else
