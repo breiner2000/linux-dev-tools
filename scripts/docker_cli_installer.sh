@@ -22,8 +22,6 @@ sudo groupadd docker
 
 sudo usermod -aG docker $USER
 
-sudo newgrp docker
-
 # Configurar docker para que se inicie con el sistema
 
 wget https://raw.githubusercontent.com/moby/moby/master/contrib/init/systemd/docker.service
@@ -35,7 +33,6 @@ sudo mkdir -p /etc/systemd/system/
 sudo mv -f docker.service docker.socket /etc/systemd/system/
 
 sudo systemctl stop docker
-
 
 sudo systemctl enable docker.service
 
