@@ -1,4 +1,4 @@
-
+#!/bin/sh
 # Se puede descargar la última versión desde https://download.docker.com/linux/static/stable/x86_64/
 
 DOCKER_BINARIES="https://download.docker.com/linux/static/stable/x86_64/docker-24.0.6.tgz"
