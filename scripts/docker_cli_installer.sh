@@ -14,7 +14,7 @@ sudo mv docker/* /usr/bin/
 sudo rm -rf docker
 
 # todo: verificar si hay que ejecutar ese comando
-sudo dockerd &
+# sudo dockerd &
 
 # Agregar usuario al grupo para ejecutar docker sin sudo
 
