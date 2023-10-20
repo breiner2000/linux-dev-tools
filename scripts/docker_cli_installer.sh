@@ -32,9 +32,9 @@ sudo mkdir -p /etc/systemd/system/
 
 sudo mv -f docker.service docker.socket /etc/systemd/system/
 
-sudo systemctl stop docker
+# Recargar unidades de systemd
+sudo systemctl daemon-reload
 
-sudo systemctl enable docker.service
 
 
 
