@@ -3,7 +3,24 @@
 # Desinstalar todos los paquetes que pueden causar conflictos
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg -y; done
 
-sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras -y
+
+purge_if_installed() {
+    if dpkg -l "$1" &> /dev/null; then
+        sudo apt-get purge "$1" -y
+    fi
+}
+packages_to_purge=(
+    docker-ce
+    docker-ce-cli
+    containerd.io
+    docker-buildx-plugin
+    docker-compose-plugin
+    docker-ce-rootless-extras
+)
+
+for pkg in "${packages_to_purge[@]}"; do
+    purge_if_installed "$pkg"
+done
 
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
