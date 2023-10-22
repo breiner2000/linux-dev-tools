@@ -5,23 +5,39 @@ DOCKER_DEB_PACKAGE="https://desktop.docker.com/linux/main/amd64/docker-desktop-4
 
 sudo apt install gnome-terminal
 
-# Remover versiones anteriores de docker desktop
+# Verificar si el paquete docker-desktop está instalado
 if dpkg -l | grep -q docker-desktop; then
     echo "El paquete docker-desktop está instalado."
-    sudo apt remove docker-desktop
-    rm -r $HOME/.docker/desktop
-    sudo rm /usr/local/bin/com.docker.cli
-    sudo apt purge docker-desktop
+
+    # Verificar si el directorio ~/.docker/desktop existe antes de intentar eliminarlo
+    if [ -d "$HOME/.docker/desktop" ]; then
+        rm -r "$HOME/.docker/desktop"
+    else
+        echo "El directorio $HOME/.docker/desktop no existe."
+    fi
+
+    # Verificar si el archivo /usr/local/bin/com.docker.cli existe antes de intentar eliminarlo
+    if [ -e "/usr/local/bin/com.docker.cli" ]; then
+        sudo rm "/usr/local/bin/com.docker.cli"
+    else
+        echo "El archivo /usr/local/bin/com.docker.cli no existe."
+    fi
+
+    # Desinstalar el paquete docker-desktop
+    sudo apt remove docker-desktop -y
+    sudo apt purge docker-desktop -y
 else
     echo "El paquete docker-desktop no está instalado."
 fi
 
 # Instalar docker desktop
-sudo wget $DOCKER_DEB_PACKAGE -O docker-desktop.deb
+cd /tmp
 
-sudo apt-get install -y ./docker-desktop.deb
+sudo wget -O docker-desktop.deb $DOCKER_DEB_PACKAGE 
 
-sudo rm docker-desktop.deb
+sudo apt-get install ./docker-desktop.deb
+
+sudo rm -r docker-desktop.deb
 
 
 

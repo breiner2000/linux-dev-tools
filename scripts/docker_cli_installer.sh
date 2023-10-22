@@ -4,23 +4,15 @@
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg -y; done
 
 
-purge_if_installed() {
-    if dpkg -l "$1" &> /dev/null; then
-        sudo apt-get purge "$1" -y
+# Verificar e intentar purgar los paquetes solo si están instalados
+for pkg in docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras; do
+    if sudo dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "installed"; then
+        sudo apt-get purge "$pkg" -y
+    else
+        echo "$pkg no está instalado, no se puede purgar."
     fi
-}
-packages_to_purge=(
-    docker-ce
-    docker-ce-cli
-    containerd.io
-    docker-buildx-plugin
-    docker-compose-plugin
-    docker-ce-rootless-extras
-)
-
-for pkg in "${packages_to_purge[@]}"; do
-    purge_if_installed "$pkg"
 done
+
 
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
