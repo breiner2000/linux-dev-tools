@@ -1,6 +1,6 @@
 # linux-dev-tools
 
-Instalar todas las herramientas de desarrollo web en linux
+Ejecutar `./install_apps` para instalar todas las herramientas de desarrollo web en linux
 
 - [x] Docker
 - [x] Docker Desktop
