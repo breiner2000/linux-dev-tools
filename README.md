@@ -32,7 +32,7 @@ java -version
 ### Test NodeJS
 
 ```shell
-node -version
+node --version
 ```
 
 ### Test Gradle
