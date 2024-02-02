@@ -23,79 +23,28 @@ nodejs_res=$?
 ./scripts/jdk-17_installer.sh
 jdk_res=$?
 
+# instalar python3.10-venv
+./scripts/python_venv_installer.sh
 
 
-if [ "$docker_cli_res" -eq 0 ]; then
-    echo "\e[1;32m Docker instalado correctamente. 
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar Docker.
-    \e[0m"
-fi
+print_status() {
+    if [ "$1" -eq 0 ]; then
+        echo -e "\e[1;32m $2
+        \e[0m"
+    else
+        echo -e "\e[1;31m $3
+        \e[0m"
+    fi
+}
 
-if [ "$docker_desktop_res" -eq 0 ]; then
-    echo "\e[1;32m Docker Desktop instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar Docker Desktop.
-    \e[0m"
-fi
-
-if [ "$vscode_res" -eq 0 ]; then
-    echo "\e[1;32m VSCode instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar VSCode.
-    \e[0m"
-fi
-
-if [ "$jetbrains_res" -eq 0 ]; then
-    echo "\e[1;32m Jetbrains Toolbox instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar Jetbrains Toolbox.
-    \e[0m"
-fi
-
-if [ "$gradle_res" -eq 0 ]; then
-    echo "\e[1;32m Gradle instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar Gradle.
-    \e[0m"
-fi
-
-if [ "$maven_res" -eq 0 ]; then
-    echo "\e[1;32m Maven instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar Maven.
-    \e[0m"
-fi
-
-if [ "$nodejs_res" -eq 0 ]; then
-    echo "\e[1;32m NodeJS instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar NodeJS.
-    \e[0m"
-fi
-
-if [ "$jdk_res" -eq 0 ]; then
-    echo "\e[1;32m JDK 17 instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar JDK 17.
-    \e[0m"
-fi
-
-if [ "$nodejs_res" -eq 0 ]; then
-    echo "\e[1;32m NodeJS instalado correctamente.
-    \e[0m"
-else
-    echo "\e[1;31m Error al instalar NodeJS.
-    \e[0m"
-fi
+print_status $docker_cli_res "Docker instalado correctamente." "Error al instalar Docker."
+print_status $docker_desktop_res "Docker Desktop instalado correctamente." "Error al instalar Docker Desktop."
+print_status $vscode_res "VSCode instalado correctamente." "Error al instalar VSCode."
+print_status $jetbrains_res "Jetbrains Toolbox instalado correctamente." "Error al instalar Jetbrains Toolbox."
+print_status $gradle_res "Gradle instalado correctamente." "Error al instalar Gradle."
+print_status $maven_res "Maven instalado correctamente." "Error al instalar Maven."
+print_status $nodejs_res "NodeJS instalado correctamente." "Error al instalar NodeJS."
+print_status $jdk_res "JDK 17 instalado correctamente." "Error al instalar JDK 17."
 
 echo "\e[1;32m Reiniciar el sistema :). \e[0m"
 
