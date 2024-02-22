@@ -1,6 +1,6 @@
 #!/bin/sh -e
 # https://nodejs.org/dist/latest/
-NODE_DOWNLOAD_LINK="https://nodejs.org/dist/latest/node-v21.5.0-linux-x64.tar.xz" 
+NODE_DOWNLOAD_LINK="https://nodejs.org/dist/v21.6.2/node-v21.6.2-linux-x64.tar.xz" 
 
 sudo rm -rf /opt/node
 

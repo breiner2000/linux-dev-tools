@@ -1,6 +1,6 @@
 #!/bin/sh -e
 # https://maven.apache.org/download.cgi
-MAVEN_DOWNLOAD_LINK="https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz"
+MAVEN_DOWNLOAD_LINK="https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz"
 
 sudo rm -rf /opt/maven
 

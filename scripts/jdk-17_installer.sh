@@ -1,6 +1,6 @@
 #!/bin/sh -e
 # https://github.com/adoptium/temurin17-binaries/releases
-JDK_DOWNLOAD_LINK="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz" 
+JDK_DOWNLOAD_LINK="https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz" 
 
 sudo rm -rf /opt/jdk-17
 
