@@ -1,3 +1,6 @@
+from bs4 import BeautifulSoup
+import requests
+
 def get_docker_desktop_deb_package():
     try:
         url = 'https://docs.docker.com/desktop/install/ubuntu/'
