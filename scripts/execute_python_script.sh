@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 # Instalar el paquete python3.10-venv
 sudo apt install python3.10-venv -y
@@ -7,13 +7,13 @@ sudo apt install python3.10-venv -y
 python3 -m venv venv
 
 # Activar el entorno virtual
-source venv/bin/activate
+. venv/bin/activate
 
 # Instalar las dependencias
-pip install -r requirements.txt
+pip install -r ./scripts/requirements.txt
 
 # Ejecutar el script
-python main.py
+python ./scripts/main.py
 
 # Desactivar el entorno virtual
 deactivate

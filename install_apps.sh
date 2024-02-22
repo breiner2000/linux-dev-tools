@@ -1,4 +1,8 @@
 #!/bin/sh
+
+./scripts/execute_python_script.sh
+python_res=$?
+
 ./scripts/docker_cli_installer.sh 
 docker_cli_res=$? 
 
@@ -23,9 +27,6 @@ nodejs_res=$?
 ./scripts/jdk-17_installer.sh
 jdk_res=$?
 
-# instalar python3.10-venv
-./scripts/python_venv_installer.sh
-
 
 print_status() {
     if [ "$1" -eq 0 ]; then
@@ -37,6 +38,7 @@ print_status() {
     fi
 }
 
+print_status $python_res "Python instalado correctamente y librerias actualizadas." "Error al instalar Python o actualizar las librerias."
 print_status $docker_cli_res "Docker instalado correctamente." "Error al instalar Docker."
 print_status $docker_desktop_res "Docker Desktop instalado correctamente." "Error al instalar Docker Desktop."
 print_status $vscode_res "VSCode instalado correctamente." "Error al instalar VSCode."

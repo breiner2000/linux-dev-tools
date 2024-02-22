@@ -133,15 +133,15 @@ def modify_shell_script(script, line_to_modify, var_to_update, new_content):
         file.writelines(lines)
 
 
-modify_shell_script("docker_desktop_installer.sh", 3,
+modify_shell_script("./scripts/docker_desktop_installer.sh", 3,
                     "DOCKER_DEB_PACKAGE", get_docker_desktop_deb_package())
-modify_shell_script("gradle_installer.sh", 3,
+modify_shell_script("./scripts/gradle_installer.sh", 3,
                     "GRADLE_DOWNLOAD_LINK", get_gradle_binary())
-modify_shell_script("jdk-17_installer.sh", 3,
+modify_shell_script("./scripts/jdk-17_installer.sh", 3,
                     "JDK_DOWNLOAD_LINK", get_jdk17())
-modify_shell_script("maven_installer.sh", 3,
+modify_shell_script("./scripts/maven_installer.sh", 3,
                     "MAVEN_DOWNLOAD_LINK", get_maven())
-modify_shell_script("nodejs_installer.sh", 3,
+modify_shell_script("./scripts/nodejs_installer.sh", 3,
                     "NODE_DOWNLOAD_LINK", get_nodejs())
 
 
