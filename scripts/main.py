@@ -117,28 +117,33 @@ def get_nodejs():
         return ''
 
 
-def modify_shell_script(script, line_to_modify, var_to_update, new_content):
-    with open(script, 'r') as file:
-        lines = file.readlines()
+# def modify_shell_script(script, line_to_modify, var_to_update, new_content):
+#     with open(script, 'r') as file:
+#         lines = file.readlines()
 
-    if 0 < line_to_modify <= len(lines):
-        if new_content != '':
-            lines[line_to_modify - 1] = f'{var_to_update}="{new_content}"\n'
+#     if 0 < line_to_modify <= len(lines):
+#         if new_content != '':
+#             lines[line_to_modify - 1] = f'{var_to_update}="{new_content}"\n'
 
-    with open(script, 'w') as file:
-        file.writelines(lines)
+#     with open(script, 'w') as file:
+#         file.writelines(lines)
 
+# modify_shell_script("./scripts/docker_desktop_installer.sh", 3,
+#                     "DOCKER_DEB_PACKAGE", get_docker_desktop_deb_package())
+# modify_shell_script("./scripts/gradle_installer.sh", 3,
+#                     "GRADLE_DOWNLOAD_LINK", get_gradle_binary())
+# modify_shell_script("./scripts/jdk-17_installer.sh", 3,
+#                     "JDK_DOWNLOAD_LINK", get_jdk17())
+# modify_shell_script("./scripts/maven_installer.sh", 3,
+#                     "MAVEN_DOWNLOAD_LINK", get_maven())
+# modify_shell_script("./scripts/nodejs_installer.sh", 3,
+#                     "NODE_DOWNLOAD_LINK", get_nodejs())
 
-modify_shell_script("./scripts/docker_desktop_installer.sh", 3,
-                    "DOCKER_DEB_PACKAGE", get_docker_desktop_deb_package())
-modify_shell_script("./scripts/gradle_installer.sh", 3,
-                    "GRADLE_DOWNLOAD_LINK", get_gradle_binary())
-modify_shell_script("./scripts/jdk-17_installer.sh", 3,
-                    "JDK_DOWNLOAD_LINK", get_jdk17())
-modify_shell_script("./scripts/maven_installer.sh", 3,
-                    "MAVEN_DOWNLOAD_LINK", get_maven())
-modify_shell_script("./scripts/nodejs_installer.sh", 3,
-                    "NODE_DOWNLOAD_LINK", get_nodejs())
+print(get_docker_desktop_deb_package())
+print(get_gradle_binary())
+print(get_jdk17())
+print(get_maven())
+print(get_nodejs())
 
 
 
