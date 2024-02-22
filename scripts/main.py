@@ -1,7 +1,3 @@
-from bs4 import BeautifulSoup
-import requests
-
-
 def get_docker_desktop_deb_package():
     try:
         url = 'https://docs.docker.com/desktop/install/ubuntu/'
@@ -9,18 +5,18 @@ def get_docker_desktop_deb_package():
         response.raise_for_status()  # Lanzar una excepción en caso de error HTTP
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
-        a_link = soup.find('a', class_='link external-link')
+        a_tag = soup.find_all('a')
         docker_url = ''
-        # Verificar si se encontró la etiqueta
-        if not a_link:
+        if not a_tag:
             return docker_url
-        a_link_text = a_link['href']
-        docker_url = a_link_text
+        for a in a_tag:
+            if 'DEB package' in a.text:
+                docker_url = a['href']
+                break
         return docker_url
     except requests.exceptions.RequestException as e:
         print(f'Error al cargar la página: {e}')
         return ''
-
 
 def get_gradle_binary():
     try:
